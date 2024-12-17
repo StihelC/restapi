@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Addition</title>
+    <script>
+        function addNumbers() {
+            const num1 = prompt("Enter the first number:");
+            const num2 = prompt("Enter the second number:");
+
+            if (num1 !== null && num2 !== null) {
+                fetch(`/add?num1=${num1}&num2=${num2}`)
+                    .then(response => response.json())
+                    .then(result => {
+                        alert(`The result is: ${result}`);
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            } else {
+                alert("Please enter both numbers.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Number Addition</h1>
+    <button onclick="addNumbers()">Add Numbers</button>
+</body>
+</html>
